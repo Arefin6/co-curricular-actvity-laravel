@@ -108,6 +108,12 @@
                             <li class="list-group-item">
                                 <a href="{{ route('perfrom.index') }}">All User</a>
                             </li>
+                            <li class="list-group-item">
+                                <a href="{{ route('EventCategory.index') }}">All Event Category</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="{{ route('EventCategory.create') }}">Add Event Category</a>
+                            </li>
 							
                         </ul>
                     </div>

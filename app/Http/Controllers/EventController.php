@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Event;
 
+use App\EventCategory;
+
 use Session;
 
 class EventController extends Controller
@@ -30,7 +32,7 @@ class EventController extends Controller
     public function create()
     {
         
-		return view('admin.event.create');
+		return view('admin.event.create')->with('categories',EventCategory::all());
 		
     }
 	
@@ -56,8 +58,8 @@ class EventController extends Controller
             'event_img'   => 'required|image',
 			
             'event_content'   => 'required',
-		
-			
+
+		    'eventCategory_id' => 'required'
         ]);
 
         $event_img = $request->event_img;
@@ -72,15 +74,15 @@ class EventController extends Controller
 			
 			'event_img' => 'uploads/events/'.$event_img_new_name,
 			
-			'event_content' => $request->event_content,
-           
+            'event_content' => $request->event_content,
             
+            'event_category_id'=>$request->eventCategory_id,
             
         ]);
 
         Session::flash('success','event added successfully');
 
-        return redirect()->back();
+        return redirect()->route('event.index');
 
 		
 		
@@ -109,7 +111,8 @@ class EventController extends Controller
         
 		$event=Event::find($id);
 		
-        return view('admin.event.edit')->with('event',$event);
+        return view('admin.event.edit')->with('event',$event)
+        ->with('categories',EventCategory::all());
     }
 
     /**
@@ -130,6 +133,7 @@ class EventController extends Controller
             'event_content'   => 'required',
 		
 			
+		    'event_category_id' => 'required'
         ]);
 
 		$event=Event::find($id);
@@ -150,12 +154,14 @@ class EventController extends Controller
 		 $event->event_title = $request->event_title;
 		
          $event->event_content = $request->event_content;
-		
+
+         $event->event_category_id = $request->eventCategory_id;
+
 		 $event->save();
 		
 		 Session::flash('success','event updated successfully');
 
-         return redirect()->back();
+         return redirect()->route('event.index');
 		
     }
 

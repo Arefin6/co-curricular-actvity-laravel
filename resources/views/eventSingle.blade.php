@@ -14,13 +14,16 @@
   }
  </style> 
 
-    <div class="row mt-5">
-    @if($eventsCategory->count()>0)
-      @foreach($eventsCategory as $event) 
-       <div class="card col-md-3 p-4 ml-5 bg-warning" style="width: 18rem;">
-        <img src="{{ asset('' . $event->img) }}" class="card-img-top img-fluid" alt="...">
+    <div class="row mt-5 mb-4">
+    @if($events->count()>0)
+      @foreach($events->events as $event) 
+       <div class="card col-md-5 offset-md-1 mb-5  " style="width: 14rem; height:35rem">
+        <img src="{{ asset('' . $event->event_img) }}" class="card-img-top img-fluid" alt="...">
         <div class="card-body">
-          <h5 class="card-title"><a href="{{route('event.category',['id'=>$event->id])}}" class="text-white text-center">{{$event->name}}</a></h5>
+          <h5 class="card-title">{{$event->event_title}}</h5>
+          <p style="text-align:justify">
+           {{$event->event_content}}
+          </p>
           
         </div>
       </div>

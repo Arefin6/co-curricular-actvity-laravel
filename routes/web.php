@@ -142,6 +142,14 @@ Route::get('/perfrom/index',[
 
 
 ]);
+Route::get('/eventCategory/single/{id}',[
+ 
+  'uses'=>'FroentendController@eventCategory',
+	
+  'as'  =>'event.category'
+
+
+]);
 
 
 Route::post('/perfrom/register/store',[
@@ -248,11 +256,57 @@ Route::post('/category/store',[
 
 ]);
 
+//event category
+
+Route::get('/eventcategory/create',[
+ 
+  'uses'=>'EventCategoryController@create',
+  'as'  =>'EventCategory.create'
+
+
+]);
+Route::post('/eventcategory/store',[
+ 
+  'uses'=>'EventCategoryController@store',
+  'as'  =>'EventCategory.store'
+
+]);
+
+Route::get('/eventcategory/index',[
+ 
+  'uses'=>'EventCategoryController@index',
+  'as'  =>'EventCategory.index'
+
+
+]);
+
+Route::get('/eventcategory/edit/{id}',[
+ 
+  'uses'=>'EventCategoryController@edit',
+  'as'  =>'EventCategory.edit'
+
+
+]);
+
+Route::post('/eventcategory/update/{id}',[
+ 
+  'uses'=>'EventCategoryController@update',
+  'as'  =>'EventCategory.update'
+
+]);
+
+
+Route::get('/eventcategory/delete/{id}',[
+ 
+  'uses'=>'EventCategoryController@destroy',
+  'as'  =>'EventCategory.delete'
+
+]);
 
 
 Route::post('/category/update/{id}',[
  
-  'uses'=>'CategoriesControlleer@update',
+  'uses'=>'CategoriesController@update',
   
   'as'  =>'category.update'
 
@@ -261,7 +315,7 @@ Route::post('/category/update/{id}',[
 
 Route::get('/category/delete/{id}',[
  
-  'uses'=>'CategoriesControlleer@destroy',
+  'uses'=>'CategoriesController@destroy',
   
   'as'  =>'category.delete'
 
@@ -371,9 +425,6 @@ Route::get('/user/approve/{id}',[
 		 	
      ]);
 });
-
-
-
 
 Auth::routes();
 

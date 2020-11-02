@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Event;
 
+use App\EventCategory;
+
 use App\Student;
 
 use App\Category;
@@ -16,22 +18,21 @@ class FroentendController extends Controller
     
 	public function index(){
 		
-		return view('event')
-			
- ->with('firest_event',Event::orderBy('created_at','desc')->first())
-		
- ->with('secend_event',Event::orderBy('created_at','desc')->skip(1)->take(1)->first())
- 
- ->with('thired_event',Event::orderBy('created_at','desc')->skip(2)->take(1)->first())
+		$eventCategory = EventCategory::all();
 
-  ->with('fourth_event',Event::orderBy('created_at','desc')->skip(3)->take(1)->first())
+		return view('event')->with('eventsCategory',$eventCategory);
 			
-  ->with('fifth_event',Event::orderBy('created_at','desc')->skip(4)->take(1)->first())
-			
-  ->with('sixth_event',Event::orderBy('created_at','desc')->skip(5)->take(1)->first());			
+		 
 	}
 	
-  public function read(){
+	public function eventCategory($id){
+
+	  $events = EventCategory::find($id);	
+	   
+	  return view('eventSingle')->with('events',$events);	
+	}
+	
+	public function read(){
 	  
 	  
 	   $result = Student::where('approved',1)->get();

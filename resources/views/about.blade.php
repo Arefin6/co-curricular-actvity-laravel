@@ -41,7 +41,9 @@
           <div class="col-md-6 ftco-animate">
 			  <h1 class="mb-4">Co-Curricular Activitis</h1>
             <h1 class="mb-4">Education Needs Complete Solution</h1>
-            <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+            <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.
+            Because curricular exercises alone cannot ensure total development of the students the university has been hosting a good number of clubs, societies, 
+            </p>
           </div>
         </div>
         </div>

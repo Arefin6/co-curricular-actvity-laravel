@@ -21,7 +21,11 @@
                     <label for="event_img">Event Img:</label>
                     <input type="file" name="event_img" class="form-control">
                 </div>
-                
+                <select name="eventCategory_id" id="category" class="form-control">
+                        @foreach($categories as $category)
+                            <option value="{{ $category->id}}">{{ $category->name }}</option>
+                        @endforeach
+                    </select>
                 
                 <div class="form-group">
                     <label for="event_img">Event Content:</label>
